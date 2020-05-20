@@ -18,7 +18,6 @@
     {
       "id": "Number",
       "name": "String",
-      "title": "String",
       "price": "Number",
       "image": "String",
       "sizesAvailable": "String",
@@ -92,87 +91,6 @@
 
 **Error Status Code:** `500`: Internal Server Error
 
-### GET all images to a product
-  * GET `/api/product/:productId/images`
-
-**Path Parameters:**
-
-  * `productId` product id
-
-**Success Status Code:** `200`
-
-**Error Status Code:** `400` : Bad Request
-
-**Error Status Code:** `500`: Internal Server Error
-
-**Request Body**: Expects JSON with the following keys.
-
-```json
-    {
-      "imageId": "Number",
-      "imageName": "String",
-      "imageTitle": "String",
-      "imageURL": "String",
-      "imageCreatedDate": "Date",
-      "imageModifiedDate": "Date"
-    }
-```
-
-### POST all images to a product
-  * POST `/api/product/:productId/images`
-
-**Path Parameters:**
-
-  * `productId` product id
-
-**Success Status Code:** `201`
-
-**Error Status Code:** `400` : Bad Request
-
-**Error Status Code:** `404` : productId does not match with any of the existing products
-
-**Error Status Code:** `500`: Internal Server Error
-
-**Request Body**: Expects JSON with the following keys.
-
-```json
-    {
-      "imageId": "Number",
-      "imageName": "String",
-      "imageTitle": "String",
-      "imageURL": "String",
-      "imageCreatedDate": "Date",
-      "imageModifiedDate": "Date"
-    }
-```
-
-### DELETE all images to a product
-  * DELETE `/api/product/:productId/images`
-
-**Path Parameters:**
-
-  * `productId` product id
-
-**Success Status Code:** `201`
-
-**Error Status Code:** `400` : Bad Request
-
-**Error Status Code:** `404` : productId does not match with any of the existing products
-
-**Error Status Code:** `500`: Internal Server Error
-
-**Request Body**: Expects JSON with the following keys.
-
-```json
-    {
-      "imageId": "Number",
-      "imageName": "String",
-      "imageTitle": "String",
-      "imageURL": "String",
-      "imageCreatedDate": "Date",
-      "imageModifiedDate": "Date"
-    }
-```
 ### GET all products based on category
   * GET `/api/product/:productId/?category="name"`
 
