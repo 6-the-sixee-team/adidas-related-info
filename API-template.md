@@ -173,3 +173,59 @@
       "imageModifiedDate": "Date"
     }
 ```
+### GET all products based on category
+  * GET `/api/product/:productId/?category="name"`
+
+**Path Parameters:**
+
+  * `productId` product id
+  * `?category="name"` category query param
+
+**Success Status Code:** `200`
+
+**Error Status Code:** `400` : Bad Request
+
+**Error Status Code:** `404` : productId, category does not match with any of the existing products
+
+**Error Status Code:** `500`: Internal Server Error
+
+**Request Body**: Expects JSON with the following keys.
+
+```json
+    {
+      "productId": "Number",
+      "productName": "String",
+      "productCategory":"String",
+      "relatedProducts": [
+          {
+            "id": "Number",
+            "name": "String",
+            "title": "String",
+            "price": "Number",
+            "image": "String"    
+          },
+          {
+            "id": "Number",
+            "name": "String",
+            "title": "String",
+            "price": "Number",
+            "image": "String"   
+          }
+      ]
+    }
+```
+### DELETE all products based on category
+  * DELETE `/api/product/:productId/?category="name"`
+
+**Path Parameters:**
+
+  * `productId` product id
+  * `?category="name"` category query param
+
+**Success Status Code:** `201`
+
+**Error Status Code:** `400` : Bad Request
+
+**Error Status Code:** `404` : productId, category does not match with any of the existing products
+
+**Error Status Code:** `500`: Internal Server Error
