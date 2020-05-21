@@ -20,6 +20,8 @@
       "name": "String",
       "price": "Number",
       "image": "String",
+      "DateCreated": "Date",
+      "DateModified": "Date",
       "sizesAvailable": "String",
       "availability": "Boolean",
       "category": "String"
@@ -43,6 +45,7 @@
       "name": "String",
       "title": "String",
       "price": "Number",
+      "DateCreated": "Date",
       "image": "String",
       "sizesAvailable": "String",
       "availability": "Boolean",
@@ -72,6 +75,7 @@
       "id": "Number",
       "name": "String",
       "title": "String",
+      "DateModified": "Date",
       "price": "Number",
       "image": "String",
       "category": "String"
@@ -92,13 +96,14 @@
 
 **Error Status Code:** `500`: Internal Server Error
 
-### GET all products based on category
-  * GET `/api/product/:productId/?category="name"`
+### GET top 12 products based on category
+  * GET `/api/product/:productId/?category="name"&results=12`
 
 **Path Parameters:**
 
   * `productId` product id
-  * `?category="name"` category query param, name can be shirt, pant, socks, shoes
+  * `?category="name"` category query param, name can be shoe category
+  * `&results=12` choose the top 12 results based on popularity or date created
 
 **Success Status Code:** `200`
 
@@ -115,6 +120,8 @@
       "productId": "Number",
       "productName": "String",
       "productCategory":"String",
+      "DateCreated": "Date",
+      "DateModified": "Date",
       "relatedProducts": [
           {
             "id": "Number",
@@ -135,18 +142,3 @@
       ]
     }
 ```
-### DELETE all products based on category
-  * DELETE `/api/product/:productId/?category="name"`
-
-**Path Parameters:**
-
-  * `productId` product id
-  * `?category="name"` category query param, name can be shirt, pant, socks, shoes
-
-**Success Status Code:** `201`
-
-**Error Status Code:** `400` : Bad Request
-
-**Error Status Code:** `404` : productId, category does not match with any of the existing products
-
-**Error Status Code:** `500`: Internal Server Error
