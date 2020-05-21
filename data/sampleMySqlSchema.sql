@@ -9,16 +9,16 @@ CREATE TABLE productInfo(
     productName VARCHAR(255),
     productPrice INTEGER,
     datecreated DATE,
-    dateModified Date
+    dateModified Date,
     productImageURL VARCHAR(255),
-    productCategory VARCHAR(100)
+    categoryName VARCHAR(100),
+    category: INTEGER,
+    FOREIGN KEY (category) REFERENCES categoryInfo(categoryId)
 );
 
 CREATE TABLE categoryInfo(
     categoryId INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    categoryName VARCHAR(255),
-    productId INTEGER 
-    FOREIGN KEY (productId) REFERENCES productInfo(productId),
+    categoryName VARCHAR(255)
 );
 
 /* Join the above two tables to produce this one  */
@@ -30,7 +30,7 @@ CREATE TABLE productCategory(
     productName VARCHAR(255),
     productPrice INTEGER,
     productImageURL VARCHAR(255),
-    productCategory VARCHAR(100),
     dateCreated DATE,
-    dateModified Date
+    dateModified DATE,
+    category: INTEGER
 );

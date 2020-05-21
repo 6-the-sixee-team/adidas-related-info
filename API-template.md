@@ -92,14 +92,14 @@
 
 **Error Status Code:** `500`: Internal Server Error
 
-### GET top 12 products based on category
-  * GET `/api/product/:productId/?category="name"&results=12`
+### GET top 16 products based on category
+  * GET `/api/product/:productId/?category="name"&results=16`
 
 **Path Parameters:**
 
   * `productId` product id
   * `?category="name"` category query param, name can be shoe category
-  * `&results=12` choose the top 12 results based on popularity or date created
+  * `&results=16` choose the top 16 results based on date created
 
 **Success Status Code:** `200`
 
