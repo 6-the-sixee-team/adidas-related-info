@@ -8,20 +8,29 @@ CREATE TABLE productInfo(
     productId INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
     productName VARCHAR(255),
     productPrice INTEGER,
+    datecreated DATE,
+    dateModified Date
     productImageURL VARCHAR(255),
-    productSizesAvailable VARCHAR(100),
-    productAvailability BOOLEAN,
     productCategory VARCHAR(100)
 );
 
+CREATE TABLE categoryInfo(
+    categoryId INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    categoryName VARCHAR(255),
+    productId INTEGER 
+    FOREIGN KEY (productId) REFERENCES productInfo(productId),
+);
+
+/* Join the above two tables to produce this one  */
+
 CREATE TABLE productCategory(
     categoryId INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    categoryName VARCHAR(255),
     productId INTEGER
     productName VARCHAR(255),
     productPrice INTEGER,
     productImageURL VARCHAR(255),
-    productSizesAvailable VARCHAR(100),
-    productAvailability BOOLEAN,
-    productCategory VARCHAR(100)
-    FOREIGN KEY (productCategory) REFERENCES product_info(productCategory),
+    productCategory VARCHAR(100),
+    dateCreated DATE,
+    dateModified Date
 );

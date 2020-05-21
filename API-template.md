@@ -125,6 +125,8 @@
             "title": "String",
             "price": "Number",
             "image": "String",
+            "DateCreated": "Date",
+            "DateModified": "Date",
             "category": "String"   
           },
           {
@@ -133,6 +135,8 @@
             "title": "String",
             "price": "Number",
             "image": "String",
+            "DateCreated": "Date",
+            "DateModified": "Date",
             "category": "String"   
           }
       ]
