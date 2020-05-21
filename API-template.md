@@ -98,7 +98,7 @@
 **Path Parameters:**
 
   * `productId` product id
-  * `?category="name"` category query param, name can be shirt, pant, socks
+  * `?category="name"` category query param, name can be shirt, pant, socks, shoes
 
 **Success Status Code:** `200`
 
@@ -141,7 +141,7 @@
 **Path Parameters:**
 
   * `productId` product id
-  * `?category="name"` category query param, name can be shirt, pant, socks
+  * `?category="name"` category query param, name can be shirt, pant, socks, shoes
 
 **Success Status Code:** `201`
 
