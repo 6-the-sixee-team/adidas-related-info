@@ -22,8 +22,6 @@
       "image": "String",
       "DateCreated": "Date",
       "DateModified": "Date",
-      "sizesAvailable": "String",
-      "availability": "Boolean",
       "category": "String"
     }
 ```
@@ -47,8 +45,6 @@
       "price": "Number",
       "DateCreated": "Date",
       "image": "String",
-      "sizesAvailable": "String",
-      "availability": "Boolean",
       "category": "String"
     }
 ```
@@ -122,7 +118,7 @@
       "productCategory":"String",
       "DateCreated": "Date",
       "DateModified": "Date",
-      "relatedProducts": [
+      "categories": [
           {
             "id": "Number",
             "name": "String",
