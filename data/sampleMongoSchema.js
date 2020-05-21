@@ -10,16 +10,6 @@ const productInfoSchema = new mongoose.Schema({
     productCategory: Array
 });
 
-const productCategorySchema = new mongoose.Schema({
-    categoryId: Number,
-    productId: Number,
-    productName:String,
-    productPrice: Number,
-    productImageURL: String,
-    productSizesAvailable: String,
-    productAvailability: Boolean,
-    productCategory: String
-});
 
 const productInfo = mongoose.model('Schedule', productInfoSchema);
 const productCategory = mongoose.model('Schedule', productCategorySchema);
