@@ -73,7 +73,8 @@
       "name": "String",
       "title": "String",
       "price": "Number",
-      "image": "String"
+      "image": "String",
+      "category": "String"
     }
 ```
 
@@ -120,14 +121,16 @@
             "name": "String",
             "title": "String",
             "price": "Number",
-            "image": "String"    
+            "image": "String",
+            "category": "String"   
           },
           {
             "id": "Number",
             "name": "String",
             "title": "String",
             "price": "Number",
-            "image": "String"   
+            "image": "String",
+            "category": "String"   
           }
       ]
     }

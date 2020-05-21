@@ -1,13 +1,30 @@
 const mongoose = require('mongoose');
 
 const productInfoSchema = new mongoose.Schema({
-  id: Number,
-  restaurantName: String,
-  timeslots: Array,
-  dates_closed: Array,
+    productId: Number,
+    productName:String,
+    productPrice: Number,
+    productImageURL: String,
+    productSizesAvailable: String,
+    productAvailability: Boolean,
+    productCategory: Array
 });
 
-const ReservationSchedule = mongoose.model('Schedule', reservationScheduleSchema);
+const productCategorySchema = new mongoose.Schema({
+    categoryId: Number,
+    productId: Number,
+    productName:String,
+    productPrice: Number,
+    productImageURL: String,
+    productSizesAvailable: String,
+    productAvailability: Boolean,
+    productCategory: String
+});
 
-module.exports.reservationScheduleSchema = reservationScheduleSchema;
-module.exports.ReservationSchedule = ReservationSchedule;
+const productInfo = mongoose.model('Schedule', productInfoSchema);
+const productCategory = mongoose.model('Schedule', productCategorySchema);
+
+module.exports.productInfoSchema = productInfoSchema;
+module.exports.productCategorySchema = productCategorySchema;
+module.exports.productInfo = productInfo;
+module.exports.productCategory = productCategory;
