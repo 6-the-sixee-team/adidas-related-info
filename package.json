@@ -13,7 +13,11 @@
     "webpack": "webpack -d --watch",
     "seed": "mysql -u `cat ./seed/mysql.user` -p`cat ./seed/mysql.pass` < ./seed/schema_data.sql && exit 0",
     "build:docker": "./docker_build.sh",
-    "build:prod": "webpack --config webpack.prod.js"
+    "build:prod": "webpack --config webpack.prod.js",
+    "init:db": "mysql -u root -p < ./seed/schema_data.sql",
+    "load:db": "mysql -u root -p < ./seed/insert_data.sql",
+    "makeseed": "node seed/makeSeed.js",
+    "fullseed": "npm run init:db && npm run makeseed && npm run load:db"
   },
   "repository": {
     "type": "git",
@@ -27,12 +31,14 @@
   "homepage": "https://github.com/9-space-lobster/adidas-related-info#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.3",
+    "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "sequelize": "^5.21.7",
+    "sequelize": "^5.21.10",
     "styled-components": "^5.1.0"
   },
   "devDependencies": {
