@@ -74,14 +74,21 @@ const categories = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const insertCategoryInfo = 'INSERT INTO categoryInfo(categoryName) VALUES ('
 const insertProductInfo = 'INSERT INTO productInfo(productName, productPrice, dateCreated, dateModified, productImageURL, category) VALUES (';
-const querySuffix = ');';
+const querySuffix = '); \n';
 
 const getRandomInt = (max) =>  {
     return Math.floor(Math.random() * Math.floor(max));
 }
-const makeSeed = (numOfRecords = 1000) => {
-    let insertRecs = [];
-    for(let i=0; i< numOfRecords; i++) {
+
+function writeOneMillionTimes(writer) {
+    var i = 10000000;
+    
+    writer.write("USE adidas;\n");
+    
+    function write() {
+      var ok = true;
+      do {
+        i -= 1;
         const randomIdx = getRandomInt(10);
 
         let categoryInfo = insertCategoryInfo;
@@ -95,14 +102,28 @@ const makeSeed = (numOfRecords = 1000) => {
                     +  '"'+ productImages[randomIdx] + '"' + ', '
                     +  categories[randomIdx]
                     +  querySuffix;
-    
-        insertRecs.push(categoryInfo);
-        insertRecs.push(productInfo);
-    }
-    
-    fs.writeFile(CATEGORY_PRODUCT_FILE, "USE adidas;", 'utf8');
-    fs.appendFile(CATEGORY_PRODUCT_FILE, insertRecs.join('\n'));
-    return insertRecs;
-};
 
-makeSeed();
+        const data = categoryInfo + productInfo;                    
+        if (i === 0) {
+          // last time!
+          writer.write(data);
+        } else {
+          // see if we should continue, or wait
+          // don't pass the callback, because we're not done yet.
+          ok = writer.write(data);
+        }
+      } while (i > 0 && ok);
+      if (i > 0) {
+        // had to stop early!
+        // write some more once it drains
+        writer.once('drain', write);
+      }
+    }
+    write();
+  }
+  
+// usage
+const makeSeed = () => {
+    const write_stream = fs.createWriteStream(CATEGORY_PRODUCT_FILE);
+    writeOneMillionTimes(write_stream);
+}
