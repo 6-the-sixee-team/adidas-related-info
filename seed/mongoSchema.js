@@ -23,7 +23,7 @@ const productInfoSchema = new mongoose.Schema({
     categoryName: String
 });
 
-const productInfo = mongoose.model('Schedule', productInfoSchema);
+const productInfo = mongoose.model('productInfo', productInfoSchema);
 
 module.exports.productInfoSchema = productInfoSchema;
 module.exports = db;
