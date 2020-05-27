@@ -12,7 +12,7 @@ let productInfoSchema = mongoose.Schema({
   categoryName: String
 });
 
-let Product = mongoose.model("roductInfo", productInfoSchema);
+let Product = mongoose.model("productInfo", productInfoSchema);
 
 async function seed() {
   for (let i = 0; i < 10000000; i++) {
