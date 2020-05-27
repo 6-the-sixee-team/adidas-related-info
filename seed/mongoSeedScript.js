@@ -12,7 +12,7 @@ let productInfoSchema = mongoose.Schema({
   categoryName: String
 });
 
-let Product = mongoose.model("productInfo", productInfoSchema);
+let productInfo = mongoose.model("productInfo", productInfoSchema);
 
 async function seed() {
   for (let i = 0; i < 10000000; i++) {
@@ -22,7 +22,7 @@ async function seed() {
     let dateCreated = faker.date.past();
     let categoryName = faker.random.word();
 
-    let item = new Product({
+    let item = new productInfo({
       productName: `${name}`,
       productPrice: `${price}`,
       productImageURL: `${image}`,
