@@ -17,7 +17,8 @@
     "init:db": "mysql -u root -p < ./seed/schema_data.sql",
     "load:db": "mysql -u root -p < ./seed/insert_data.sql",
     "makeseed": "node seed/makeSeed.js",
-    "fullseed": "npm run init:db && npm run makeseed && npm run load:db"
+    "fullseed": "npm run init:db && npm run makeseed && npm run load:db",
+    "fullmongoseed": "npm run seed/mongoSeedScript.js"
   },
   "repository": {
     "type": "git",
@@ -57,6 +58,7 @@
     "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
+    "faker": "^4.1.0",
     "html-webpack-plugin": "^4.3.0",
     "jest": "^26.0.1",
     "jest-environment-enzyme": "^7.1.2",
