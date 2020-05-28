@@ -1,39 +1,56 @@
-const mongoose = require('mongoose');
-const mongoURI = 'mongodb://localhost:27017/adidas';
+const fs = require('fs');
+const path = require('path');
+const csvWriter = require('csv-write-stream');
+const MONGO_DATA_FILE = path.join(__dirname, 'mongodata.csv');
+
 const faker = require("faker");
 
-mongoose.createConnection(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+function writeOneMillionTimes(writer) {
+  let i = 10000000;
 
-let productInfoSchema = mongoose.Schema({
-  productName: String,
-  productPrice: Number,
-  productImageURL: String,
-  dateCreated: Date,
-  categoryName: String
-});
+  function write() {
+    let ok = true;
+    do {
+      i -= 1;
+        
+      const name = faker.commerce.productName();
+      const image = faker.image.imageUrl();
+      const price = faker.commerce.price();
+      const dateCreated = faker.date.past();
+      const categoryName = faker.random.word();
 
-let productInfo = mongoose.model("productInfo", productInfoSchema);
+      const data = {
+        productName: `${name}`,
+        productPrice: `${price}`,
+        productImageURL: `${image}`,
+        dateCreated: `${dateCreated}`,
+        categoryName: `${categoryName}`
+      };
 
-async function seed() {
-  for (let i = 0; i < 10000000; i++) {
-    let name = faker.commerce.productName();
-    let image = faker.image.imageUrl();
-    let price = faker.commerce.price();
-    let dateCreated = faker.date.past();
-    let categoryName = faker.random.word();
-
-    let item = new productInfo({
-      productName: `${name}`,
-      productPrice: `${price}`,
-      productImageURL: `${image}`,
-      dateCreated: `${dateCreated}`,
-      categoryName: `${categoryName}`
-    });
-
-    await item
-      .save()
-      .then(success => {})
-      .catch(err => {console.log(err)});
+      if (i === 0) {
+        // last time!
+        writer.write(data);
+        writer.end();
+        console.log('DONE');
+      } else {
+        // see if we should continue, or wait
+        // don't pass the callback, because we're not done yet.
+        ok = writer.write(data);
+      }
+    } while (i > 0 && ok);
+    if (i > 0) {
+      // had to stop early!
+      // write some more once it drains
+      writer.once('drain', write);
+    }
   }
+  write();
 }
-seed();
+
+const makeMongoSeed = () => {
+  const writer = csvWriter();
+  writer.pipe(fs.createWriteStream(MONGO_DATA_FILE));
+  writeOneMillionTimes(writer);
+}
+
+makeMongoSeed();

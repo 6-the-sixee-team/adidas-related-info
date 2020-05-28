@@ -18,7 +18,9 @@
     "load:db": "mysql -u root -p < ./seed/insert_data.sql",
     "makeseed": "node seed/makeSeed.js",
     "fullseed": "npm run init:db && npm run makeseed && npm run load:db",
-    "fullmongoseed": "npm run seed/mongoSeedScript.js"
+    "generate:mongodata": "node seed/mongoSeedScript.js",
+    "load:mongodata": "mongoimport -d adidas -c productinfo --type csv --file seed/mongodata.csv --headerline --drop",
+    "fullseed:mongodata": "npm run generate:mongodata && npm run load:mongodata"
   },
   "repository": {
     "type": "git",
@@ -53,6 +55,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
     "clean-webpack-plugin": "^3.0.0",
+    "csv-write-stream": "^2.0.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.4.4",
