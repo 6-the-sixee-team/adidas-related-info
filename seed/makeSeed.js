@@ -127,3 +127,5 @@ const makeSeed = () => {
     const write_stream = fs.createWriteStream(CATEGORY_PRODUCT_FILE);
     writeOneMillionTimes(write_stream);
 }
+
+makeSeed();
