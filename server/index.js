@@ -1,6 +1,6 @@
+require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
-const Products = require('../database/index.js');
 const db = require('../database');
 const app = express();
 const PORT = 3002;
