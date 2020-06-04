@@ -18,13 +18,15 @@ function writeOneMillionTimes(writer) {
       const price = faker.commerce.price();
       const dateCreated = faker.date.past();
       const categoryName = faker.random.word();
+      const categoryId = faker.random.number();
 
       const data = {
         productName: `${name}`,
         productPrice: `${price}`,
         productImageURL: `${image}`,
         dateCreated: `${dateCreated}`,
-        categoryName: `${categoryName}`
+        categoryName: `${categoryName}`,
+        categoryId: `${categoryId}`
       };
 
       if (i === 0) {
