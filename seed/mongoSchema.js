@@ -13,17 +13,18 @@ db
     console.log(err);
   });
 
-const productInfoSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
     id: Number,
     productName:String,
     productPrice: Number,
     productImageURL: String,
     dateCreated: Date,
     dateModified: Date,
-    categoryName: String
+    categoryName: String,
+    categoryId: Number,
 });
 
-const productInfo = mongoose.model('productInfo', productInfoSchema);
+const Product = mongoose.model('product', productSchema);
 
-module.exports.productInfoSchema = productInfoSchema;
+module.exports.productSchema = productSchema;
 module.exports = db;

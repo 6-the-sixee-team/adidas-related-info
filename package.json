@@ -19,7 +19,7 @@
     "makeseed": "node seed/makeSeed.js",
     "fullseed": "npm run init:db && npm run makeseed && npm run load:db",
     "generate:mongodata": "node seed/mongoSeedScript.js",
-    "load:mongodata": "mongoimport -d adidas -c productinfo --type csv --file seed/mongodata.csv --headerline --drop",
+    "load:mongodata": "mongoimport -d adidas -c products --type csv --file seed/mongodata.csv --headerline --drop",
     "fullseed:mongodata": "npm run generate:mongodata && npm run load:mongodata",
     "stress:test": "k6 run stress-test/load-test.js"
   },
