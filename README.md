@@ -1,19 +1,24 @@
 Setup
 -----
-1. run ```npm install```
-2. update config files with mysql user/pass
-  - ```echo '[YOUR DB USER]' > /seed/mysql.user```
-  - ```echo '[YOUR DB PASS]' > /seed/mysql.pass```
-  - update server/db/mysql_config.js
+
+Back End System Design of a full stack Shoe Recommendation Component
+
+Install all the dependencies
+-----
+run ```npm install```
 
 Seed Data
 ---------
-1. run ```npm run seed```
+run ```npm run fullseed:mongodata```
 
 Start server
 ------------
-1. run ```npm start```
+run ```npm run start```
+
+Start webpack
+------------
+run ```npm run webpack```
 
 Start with docker
 -----------------
-1. run ```npm run build:docker```
+run ```npm run build:docker```
